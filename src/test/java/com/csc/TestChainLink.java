@@ -23,22 +23,22 @@ public class TestChainLink {
   @Test
   void TestNodeLinking(){
     ChainLink linkOne = new ChainLink("red");
-    Node nodeOne = new Node(linkOne);
+    Node<ChainLink> nodeOne = new Node<>(linkOne);
 
     ChainLink linkTwo = new ChainLink("blue");
-    Node nodeTwo = new Node(linkTwo);
+    Node<ChainLink> nodeTwo = new Node<>(linkTwo);
 
     ChainLink linkThree = new ChainLink("green");
-    Node nodeThree = new Node(linkThree);
+    Node<ChainLink> nodeThree = new Node<>(linkThree);
 
     nodeOne.setNext(nodeTwo);
     nodeTwo.setNext(nodeThree);
 
-    Node setNode = nodeOne.getNext();
+    Node<ChainLink> setNode = nodeOne.getNext();
     ChainLink setLink = setNode.getData();
     assertEquals("blue", setLink.color);
 
-    Node setNodeTwo = nodeOne.getNext().getNext();
+    Node<ChainLink> setNodeTwo = nodeOne.getNext().getNext();
     ChainLink setLinkTwo = setNodeTwo.getData();
     assertEquals("green", setLinkTwo.color);
   }
@@ -46,7 +46,7 @@ public class TestChainLink {
   @Test
   void testNullInNode(){
     ChainLink nullLink = new ChainLink(null);
-    Node nullNode = new Node(nullLink);
+    Node<ChainLink> nullNode = new Node<>(nullLink);
 
     assertEquals("ChainLink{color='null'}", nullLink.toString());
     assertEquals(null, nullNode.getData().color);

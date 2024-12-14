@@ -12,45 +12,45 @@ public class ChainLink {
     }
 }
 
-class Node{
-    private ChainLink data;
-    private Node next;
+class Node<T>{
+    private T data;
+    private Node<T> next;
 
-    public Node(ChainLink data){
+    public Node(T data){
         this.data = data;
         this.next = null;
     }
 
-    public Node(ChainLink data, Node next){
+    public Node(T data, Node<T> next){
         this.data = data;
         this.next = next;
     }
 
-    public ChainLink getData(){
+    public T getData(){
         return data;
     }
 
-    public Node getNext(){
+    public Node<T> getNext(){
         return next;
     }
 
-    public void setNext(Node next){
+    public void setNext(Node<T> next){
         this.next = next;
     }
 
-    class SinglyLinkedList {
-        private Node head;
+    class SinglyLinkedList<T> {
+        private Node<T> head;
 
         public SinglyLinkedList() {
             this.head = null;
         }
 
-        public void append(ChainLink clink) {
-            Node newNode = new Node(clink);
+        public void append(T clink) {
+            Node<T> newNode = new Node<>(clink);
             if (head == null) {
                 head = newNode;
             } else {
-                Node current = head;
+                Node<T> current = head;
                 while (current.getNext() != null) {
                     current = current.getNext();
                 }
@@ -58,12 +58,12 @@ class Node{
             }
         }
 
-        public ChainLink get(int index) {
+        public T get(int index) {
             if (index < 0) {
                 return null;
             }
 
-            Node current = head;
+            Node<T> current = head;
             int count = 0;
             while (current != null) {
                 if (count == index) {
@@ -76,7 +76,7 @@ class Node{
         }
 
         public void displayList() {
-            Node current = head;
+            Node<T> current = head;
             while (current != null) {
                 System.out.println(current.getData());
                 current = current.getNext();
